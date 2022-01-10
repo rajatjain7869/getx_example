@@ -24,7 +24,7 @@ class ProductsGrid extends StatelessWidget {
       itemCount: showFavourites
           ? controller.favouriteItems.length
           : controller.items.length,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 3 / 2,
           crossAxisSpacing: 10,
@@ -61,7 +61,7 @@ class ProductsGrid extends StatelessWidget {
                         controller.items[index].isFavourite == true
                             ? Icons.favorite
                             : Icons.favorite_border,
-                        color: Theme.of(context).accentColor,
+                        color: Theme.of(context).colorScheme.secondary,
                       ),
                       onPressed: () {
                         controller.toggleFavouriteStatus(index);
@@ -75,7 +75,7 @@ class ProductsGrid extends StatelessWidget {
                         init: CartController(),
                         builder: (cont) {
                           return IconButton(
-                            icon: Icon(Icons.shopping_cart),
+                            icon: const Icon(Icons.shopping_cart),
                             onPressed: () {
                               cartController.addItem(
                                   controller.items[index].id,
@@ -83,7 +83,7 @@ class ProductsGrid extends StatelessWidget {
                                   controller.items[index].title,
                                   1);
                             },
-                            color: Theme.of(context).accentColor,
+                            color: Theme.of(context).colorScheme.secondary,
                           );
                         }),
                   ),
