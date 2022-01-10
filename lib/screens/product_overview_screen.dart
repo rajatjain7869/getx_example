@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_example/controllers/cart_controller.dart';
@@ -8,63 +10,64 @@ import 'package:getx_example/widgets/badge.dart';
 import 'package:getx_example/widgets/productgrid.dart';
 
 enum FilterOptions {
-  FAVOURITES,
-  ALL,
+  favourites,
+  all,
 }
 
 class ProductOverviewPage extends StatelessWidget {
+  const ProductOverviewPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     var _showOnlyFavourites = false;
-    final controller = Get.put(ProductController());
     final cartController = Get.put(CartController());
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("My Shop"),
+        title: const Text("My Shop"),
         actions: <Widget>[
           GetBuilder<ProductController>(
               init: ProductController(),
               builder: (context) {
                 return PopupMenuButton(
-                    icon: Icon(Icons.more_vert),
+                    icon: const Icon(Icons.more_vert),
                     onSelected: (FilterOptions selectedValue) {
-                      if (selectedValue == FilterOptions.FAVOURITES) {
+                      if (selectedValue == FilterOptions.favourites) {
                         _showOnlyFavourites = true;
-                        print(_showOnlyFavourites);
+                        log(_showOnlyFavourites.toString());
                       } else {
                         _showOnlyFavourites = false;
                       }
                     },
                     itemBuilder: (BuildContext context) => [
-                          PopupMenuItem(
+                          const PopupMenuItem(
                             child: Text("Only Favourites"),
-                            value: FilterOptions.FAVOURITES,
+                            value: FilterOptions.favourites,
                           ),
-                          PopupMenuItem(
+                          const PopupMenuItem(
                             child: Text("Show All"),
-                            value: FilterOptions.ALL,
+                            value: FilterOptions.all,
                           )
                         ]);
               }),
           GetBuilder<CartController>(
               init: CartController(),
-              builder: (contex) {
+              builder: (ctx) {
                 return Badge(
                   child: IconButton(
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.shopping_cart,
                       ),
                       onPressed: () {
-                        Get.to(()=>CartScreen());
+                        Get.to(()=>const CartScreen());
                       }),
                   value: cartController.itemCount.toString(),
-                  color: Theme.of(context).accentColor,
+                  color: Theme.of(context).colorScheme.secondary,
                 );
               })
         ],
       ),
-      drawer: AppDrawer(),
+      drawer: const AppDrawer(),
       body: ProductsGrid(_showOnlyFavourites),
     );
   }

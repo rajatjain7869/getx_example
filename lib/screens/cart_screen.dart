@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_example/controllers/cart_controller.dart';
@@ -15,30 +14,30 @@ class CartScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Your cart"),
+        title: const Text("Your cart"),
       ),
       body: GetBuilder<CartController>(
         init: CartController(),
         builder: (cont) => Column(
           children: <Widget>[
             Card(
-              margin: EdgeInsets.all(15),
+              margin: const EdgeInsets.all(15),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text(
+                    const Text(
                       "Total",
                       style: TextStyle(
                         fontSize: 20,
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Chip(
                       label: Text(
                         '₦${cartController.totalAmount.toStringAsFixed(2)}',
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                         ),
                       ),
@@ -60,13 +59,13 @@ class CartScreen extends StatelessWidget {
                                   snackPosition: SnackPosition.BOTTOM
                                 );
                               },
-                              child: Text('ORDER NOW'));
+                              child: const Text('ORDER NOW'));
                         })
                   ],
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Expanded(

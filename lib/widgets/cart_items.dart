@@ -9,7 +9,7 @@ class CartItem extends StatelessWidget {
   final int quantity;
   final String title;
 
-  CartItem(this.id, this.price, this.quantity, this.title, this.productId);
+  const CartItem(this.id, this.price, this.quantity, this.title, this.productId, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +18,12 @@ class CartItem extends StatelessWidget {
       key: ValueKey(id),
       background: Container(
         color: Theme.of(context).errorColor,
-        child: Icon(Icons.delete, color: Colors.white,size: 40,
+        child: const Icon(Icons.delete, color: Colors.white,size: 40,
 
         ),
         alignment: Alignment.centerRight,
-        padding: EdgeInsets.only(right: 20),
-        margin:  EdgeInsets.symmetric(horizontal: 15, vertical: 4),
+        padding: const EdgeInsets.only(right: 20),
+        margin:  const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
 
       ),
       direction: DismissDirection.endToStart,
@@ -32,7 +32,7 @@ class CartItem extends StatelessWidget {
 
       },
       child: Card(
-        margin: EdgeInsets.symmetric(horizontal: 15, vertical: 4),
+        margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListTile(

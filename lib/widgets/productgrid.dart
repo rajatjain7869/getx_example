@@ -9,8 +9,8 @@ class ProductsGrid extends StatelessWidget {
   final bool showFavourites;
 
   ProductsGrid(
-    this.showFavourites,
-  );
+    this.showFavourites, {Key? key}
+  ) : super(key: key);
   final controller = Get.put(ProductController());
 
   final cartController = Get.put(CartController());
@@ -42,15 +42,15 @@ class ProductsGrid extends StatelessWidget {
                 onTap: () {
                   Get.to(
                     ProductDetailsScreen(
-                      controller.items[index].title,
-                      controller.items[index].price,
-                          controller.items[index].imageUrl,
-                          controller.items[index].description,
+                      product.title,
+                      product.price,
+                          product.imageUrl,
+                          product.description,
                         ),
                       );
                     },
                     child: Image.network(
-                      controller.items[index].imageUrl,
+                      product.imageUrl,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -58,7 +58,7 @@ class ProductsGrid extends StatelessWidget {
                     backgroundColor: Colors.black87,
                     leading: IconButton(
                       icon: Icon(
-                        controller.items[index].isFavourite == true
+                        product.isFavourite == true
                             ? Icons.favorite
                             : Icons.favorite_border,
                         color: Theme.of(context).colorScheme.secondary,
@@ -68,7 +68,7 @@ class ProductsGrid extends StatelessWidget {
                       },
                     ),
                     title: Text(
-                      controller.items[index].title,
+                      product.title,
                       textAlign: TextAlign.center,
                     ),
                     trailing: GetBuilder<CartController>(
@@ -78,9 +78,9 @@ class ProductsGrid extends StatelessWidget {
                             icon: const Icon(Icons.shopping_cart),
                             onPressed: () {
                               cartController.addItem(
-                                  controller.items[index].id,
-                                  controller.items[index].price,
-                                  controller.items[index].title,
+                                  product.id,
+                                  product.price,
+                                  product.title,
                                   1);
                             },
                             color: Theme.of(context).colorScheme.secondary,

@@ -3,7 +3,7 @@ import 'package:getx_example/models/cart_item.dart';
 import 'package:getx_example/models/order.dart';
 
 class OrderController extends GetxController {
-  List<Order> _orders = [];
+  final List<Order> _orders = [];
 
   List<Order> get orders {
     return [..._orders];

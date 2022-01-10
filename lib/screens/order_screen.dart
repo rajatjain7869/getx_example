@@ -5,15 +5,17 @@ import 'package:getx_example/widgets/app_drawer.dart';
 import 'package:getx_example/widgets/order_item.dart';
 
 class OrderScreen extends StatelessWidget {
-  var orderController = Get.put(OrderController());
+  final orderController = Get.put(OrderController());
+
+  OrderScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Yours Orders"),
+        title: const Text("Yours Orders"),
       ),
-      drawer: AppDrawer(),
+      drawer: const AppDrawer(),
       body: ListView.builder(
           itemCount: orderController.orders.length,
           itemBuilder: (context, index) =>

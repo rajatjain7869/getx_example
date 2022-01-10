@@ -17,9 +17,10 @@ class MyApp extends StatelessWidget {
       title: 'Flutter GetX Example',
       theme: ThemeData(
         primarySwatch: Colors.indigo,
+        colorScheme: ColorScheme.fromSwatch(accentColor: Colors.deepOrangeAccent) ,
         fontFamily: "Lato",
       ),
-      home: ProductOverviewPage(),
+      home: const ProductOverviewPage(),
     );
   }
 }
